@@ -22,7 +22,7 @@ IS_CLOUD = "STREAMLIT_SHARING_MODE" in os.environ
 
 # PDF 처리 함수
 @st.cache_resource
-import os
+
 from pathlib import Path
 
 def process_pdf():

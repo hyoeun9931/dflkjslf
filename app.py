@@ -22,12 +22,20 @@ IS_CLOUD = "STREAMLIT_SHARING_MODE" in os.environ
 
 # PDF 처리 함수
 @st.cache_resource
-def process_pdf():
-    loader = PyPDFLoader(os.path.join(BASE_DIR, "data", "2024_KB_부동산_보고서_최종.pdf"))
-    documents = loader.load()
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-    return text_splitter.split_documents(documents)
+import os
+from pathlib import Path
 
+def process_pdf():
+    # 현재 실행 중인 파일(app.py)의 위치를 기준으로 절대 경로를 생성합니다.
+    current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
+    
+    # 'data' 폴더 안의 PDF 파일 경로 설정
+    file_path = current_dir / "data" / "2024_KB_부동산_보고서_최종.pdf"
+    
+    # 디버깅: 파일이 실제로 존재하는지 확인 (로그에 출력됨)
+    if not file_path.exists():
+        print(f"ERROR: 파일을 찾을 수 없습니다 -> {file_path}")
+        raise FileNotFoundError(f"PDF 파일을 찾을 수 없습니다: {file_path}")
 # 벡터 스토어 초기화
 FAISS_INDEX_PATH = os.path.join(BASE_DIR, "faiss_index")
 

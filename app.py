@@ -23,7 +23,7 @@ IS_CLOUD = "STREAMLIT_SHARING_MODE" in os.environ
 # PDF 처리 함수
 @st.cache_resource
 
-from pathlib import Path
+
 
 def process_pdf():
     # 현재 실행 중인 파일(app.py)의 위치를 기준으로 절대 경로를 생성합니다.

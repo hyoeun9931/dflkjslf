@@ -15,7 +15,6 @@ from langchain_community.chat_message_histories import ChatMessageHistory
 # Streamlit Cloud: st.secrets 우선 / 로컬: data/.env fallback
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # OpenAI API 키를 코드에 직접 입력해서 사용합니다.
-api_key="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"
 
 # Streamlit Cloud는 STREAMLIT_SHARING_MODE 환경변수를 자동으로 설정함
 IS_CLOUD = "STREAMLIT_SHARING_MODE" in os.environ
